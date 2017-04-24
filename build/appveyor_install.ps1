@@ -75,6 +75,11 @@ If (!(Test-Path $env:CCM_PATH)) {
   Copy-Item "$($env:PYTHON)\Scripts\ccm.py" "$($env:PYTHON)\Scripts\ccm"
 }
 
+$sslPath="$($env:HOMEPATH)\ssl"
+If (!(Test-Path $sslPath)) {
+  Copy-Item "$($env:CCM_PATH)\ssl" -Destination $sslPath -Recurse
+}
+
 Write-Host "Set execution Policy"
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
 
